@@ -24,8 +24,8 @@ def load_data(messages_filepath, categories_filepath):
         categories[column] = pd.to_numeric(categories[column])
     #check if there are non-binary values
     for column in categories:
-    print(column )
-    print(categories[column].value_counts())
+        print(column )
+        print(categories[column].value_counts())
     #remove non-binary values
     categories = categories[categories.related != 2]
     # drop the original categories column from `df`
