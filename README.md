@@ -29,8 +29,8 @@ classifier.pkl: trained model
 go to the "app" directory.
 execute the script without any parameters
 
-"master.html": html landing page of web app. Displays the following statistics on the training data:
-Histogram of word count per message
+"master.html": html landing page of web app. Displays the following charts :
 Frequency of output categories
 Distribution of message genres
+
 "go.hmtl": html page that displays classification results of model.
