@@ -22,6 +22,12 @@ def load_data(messages_filepath, categories_filepath):
         categories[column] = categories[column].astype(str).str[-1:]
         # convert column from string to numeric
         categories[column] = pd.to_numeric(categories[column])
+    #check if there are non-binary values
+    for column in categories:
+    print(column )
+    print(categories[column].value_counts())
+    #remove non-binary values
+    categories = categories[categories.related != 2]
     # drop the original categories column from `df`
     df=df.drop(['categories'], axis=1)
     # concatenate the original dataframe with the new `categories` dataframe
