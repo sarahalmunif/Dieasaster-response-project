@@ -23,6 +23,19 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 
 def load_data(database_filepath):
+    
+    '''
+    Function to load data from sql lite db.
+    
+    INPUTS:
+    database_filepath: path to sqlite db file
+    
+    OUTPUT:
+    X: message column
+    Y: 36 output categories
+    category_names: name of output categories
+    
+    '''
     # load data from database
     engine = create_engine('sqlite:////home/workspace/' + database_filepath)
     df = pd.read_sql_table(con=engine,table_name='InsertTableName')
@@ -33,6 +46,17 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    
+    '''
+    Function to tokenize words within a message.
+    
+    INPUTS:
+    text: message to be word tokenized
+    
+    OUTPUT:
+    tokens: cleaned word tokens of message
+    
+    '''
     stop_words = stopwords.words("english")
     lemmatizer = WordNetLemmatizer()
     text = text.lower()
@@ -44,6 +68,17 @@ def tokenize(text):
 
 
 def build_model():
+    
+    '''
+    Function to build model pipeline with feature extraction and estimator.
+    
+    INPUTS:
+    None
+    
+    OUTPUT:
+    cv: built model
+    
+    '''
     #build pipeline
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
@@ -65,6 +100,20 @@ def build_model():
 
 def evaluate_model(model, X_test, Y_test, category_names):
     
+     '''
+    Function to print out evaluation of trained model on test data.
+    
+    INPUTS:
+    model: trained model
+    X_test: messages test data
+    Y_test: output categories test data
+    category_names: name of output categories
+    
+    OUTPUT:
+    None
+    
+    '''
+    
     y_pred = model.predict(X_test)
     i=0
     for category in category_names:
@@ -76,6 +125,18 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    
+    ''
+    Function to export model as a pickle file.
+    
+    INPUTS:
+    model: trained model
+    model_filepath: path and filename to save pickle file of trained model
+    
+    OUTPUT:
+    None
+    
+    '''
     #export the mode as pickle file
     filename = model_filepath
     pickle.dump(model, open(filename, "wb"))
