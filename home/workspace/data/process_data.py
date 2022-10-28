@@ -3,6 +3,19 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    
+    
+    '''
+    Function to load messages and categories csv data into pandas dataframes.
+    
+    INPUTS:
+    messages_filepath: path to messages csv file
+    categories_filepath: path to catgeories csv file
+    
+    OUTPUT:
+    df: merged dataframe of messages and categories
+    
+    '''
     #Load the message file and categries file into data frame
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
@@ -38,12 +51,36 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    
+    '''
+    Function for data cleaning.
+    
+    INPUTS:
+    df: uncleaned dataframe
+    
+    OUTPUT:
+    df: cleaned dataframe
+    
+    '''
+    
     # drop duplicates rows
     df.drop_duplicates(inplace=True)
     return df
 
 
 def save_data(df, database_filename):
+    
+    '''
+    Function for data cleaning.
+    
+    INPUTS:
+    df: dataframe
+    database_filename: filename of sql lite database
+    
+    OUTPUT:
+    no output
+    
+    '''
     engine = create_engine('sqlite:////home/workspace/' + database_filename)
     df.to_sql('InsertTableName', engine, index=False)
      
