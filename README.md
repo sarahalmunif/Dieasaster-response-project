@@ -12,24 +12,34 @@ training the model part
 web app that use the trained model to predict.
 
 You can find below the commands you need to run the modules:
+
+Instructions:
+1. Run the following commands in the project's root directory to set up your database and model.
+
+    - To run ETL pipeline that cleans data and stores in database
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+    - To run ML pipeline that trains classifier and saves
+        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+
+2. Go to `app` directory: `cd app`
+
+3. Run your web app: `python run.py`
+
 "process_data.py": This is python script for data processing.to run the file:
-go to the "data" directory.
-execute the script with the following parameters: python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db
+
 
 disaster_messages.csv: CSV data file to process
 disaster_categories.csv: CSV data file to process
 DisasterResponse.db: sql lite database to save cleaned data
 
 "train_classifier.py": This is python script for model training. to run the file:
-go to the "model" directory.
-execute the script with the following parameters: python train_classifier.py DisasterResponse.db classifier.pkl
+
 
 DisasterResponse.db: sql lite database that store training and testing data.
 classifier.pkl: trained model
 
 "run.py": This is python script that starts web app.to run the file:
-go to the "app" directory.
-execute the script without any parameters
+
 
 "master.html": html landing page of web app. Displays the following charts :
 Frequency of output categories
