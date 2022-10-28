@@ -4,6 +4,8 @@ Udacity Nanodegree Project Disaster Response
 This is the project for Udacity Data Engineering program. In this project I used the skiils I learned to analyze disaster data from Figure Eight and build ML model that classify disaster messages. 
 In this project I used a real messages data that were send during disasters.
 
+This project will help emergency worker to classify new messages,It includes web app where an emergency worker can input a message and get the classification of the message. 
+
 The project consists of three main parts:
 data processing part
 training the model part
