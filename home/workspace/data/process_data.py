@@ -81,7 +81,9 @@ def save_data(df, database_filename):
     no output
     
     '''
-    engine = create_engine('sqlite:////home/workspace/' + database_filename)
+    
+   
+    engine = create_engine('sqlite:///./' + database_filename)
     df.to_sql('InsertTableName', engine, index=False,if_exists='replace')
      
 
