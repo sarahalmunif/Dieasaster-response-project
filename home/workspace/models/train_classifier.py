@@ -118,15 +118,17 @@ def evaluate_model(model, X_test, Y_test, category_names):
     i=0
     for category in category_names:
         print("output category in column {}: {}".format(i, category))
-        evaluation_report = classification_report(Y_test[:,i], y_pred[:,i])
+        evaluation_report = classification_report(Y_test[category], y_pred[category])
         i+=1
         print(evaluation_report)
+        
+   
     
 
 
 def save_model(model, model_filepath):
     
-    ''
+    '''
     Function to export model as a pickle file.
     
     INPUTS:
