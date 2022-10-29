@@ -37,7 +37,7 @@ def load_data(database_filepath):
     
     '''
     # load data from database
-    engine = create_engine('sqlite://///../' + database_filepath)
+    engine = create_engine('sqlite:///./' + database_filepath)
     df = pd.read_sql_table(con=engine,table_name='InsertTableName')
     X = df['message'].values
     Y = df.iloc[:,4:].values
@@ -116,10 +116,11 @@ def evaluate_model(model, X_test, Y_test, category_names):
     
     y_pred = model.predict(X_test)
     i=0
+    
     for category in category_names:
         print("output category in column {}: {}".format(i, category))
-        evaluation_report = classification_report(Y_test[category], y_pred[category])
-        i+=1
+        evaluation_report = classification_report(Y_test[:,i], y_pred[:,i])
+        i += 1
         print(evaluation_report)
         
    
