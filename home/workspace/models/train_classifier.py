@@ -37,7 +37,7 @@ def load_data(database_filepath):
     
     '''
     # load data from database
-    engine = create_engine('sqlite:////home/workspace/' + database_filepath)
+    engine = create_engine('sqlite://///../' + database_filepath)
     df = pd.read_sql_table(con=engine,table_name='InsertTableName')
     X = df['message'].values
     Y = df.iloc[:,4:].values
